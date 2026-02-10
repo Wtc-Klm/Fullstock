@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("Hello, World! Peanut is learning Fullstack Development.");
+  res.send("Hello, World! BangTop is learning Fullstack Development.");
 });
 
 app.listen(PORT, () => {
