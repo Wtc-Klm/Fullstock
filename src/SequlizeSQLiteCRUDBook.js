@@ -19,7 +19,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello, World! Peanut is learning Fullstack Development.");
+  res.send("Hello, World! BangTop is learning Fullstack Development.");
 });
 
 // define the Book model
