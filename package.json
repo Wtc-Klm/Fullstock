@@ -1,34 +1,36 @@
 {
-  "name": "fullstack_268",
+  "name": "fullstack-s01",
   "version": "1.0.0",
-  "description": "Repository for NPM",
+  "description": "Respository for full stach class",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
     "format": "prettier --write *.js",
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nutthunsk/Fullstack_268.git"
+    "url": "git+https://github.com/Pedo69/fullstack-S01.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/nutthunsk/Fullstack_268/issues"
+    "url": "https://github.com/Pedo69/fullstack-S01/issues"
   },
-  "homepage": "https://github.com/nutthunsk/Fullstack_268#readme",
+  "homepage": "https://github.com/Pedo69/fullstack-S01#readme",
   "devDependencies": {
     "prettier": "^3.7.4"
   },
   "dependencies": {
     "axios": "^1.13.5",
-    "dotenv": "^17.2.4",
+    "dotenv": "^17.2.3",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "nodemon": "^3.1.11",
+    "mongoose": "7.0.0",
+    "pg": "^8.18.0",
     "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
   }

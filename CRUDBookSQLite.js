@@ -1,37 +1,46 @@
-const express = require("express");
-const sqlite3 = require("sqlite3");
+// SQLite3 CRUD operations
+// npm install sqlite3
+// Create a Book.sqlite file in Database folder
+// Run this file with node CRUDBookSQLite.js
+// Test with Postman
+
+const express = require('express');
+const sqlite3 = require('sqlite3');
 const app = express();
 
-const db = new sqlite3.Database("./Database/Book.sqlite");
+// connect to database
+const db = new sqlite3.Database('./Database/Book.sqlite');
+
+// parse incoming requests
 app.use(express.json());
 
+// create books table if it doesn't exist
 db.run(`CREATE TABLE IF NOT EXISTS books (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT,
-    author TEXT)
-    `);
-
-app.get("/", (req, res) => {
-  res.send("Hello, World! Peanut is learning Fullstack Development.");
-});
+  id INTEGER PRIMARY KEY,
+  title TEXT,
+  author TEXT
+)`);
 
 // route to get all books
+app.get("/", (req, res) => {
+  res.send("Hello World Apicha!");
+});
+
 app.get('/books', (req, res) => {
   db.all('SELECT * FROM books', (err, rows) => {
-    if (err) {
+    if (err)
       res.status(500).send(err);
-    } else {
+    else
       res.json(rows);
-    }
   });
 });
 
 // route to get a book by id
 app.get('/books/:id', (req, res) => {
   db.get('SELECT * FROM books WHERE id = ?', req.params.id, (err, row) => {
-    if (err) {
+    if (err)
       res.status(500).send(err);
-    } else {
+    else {
       if (!row) {
         res.status(404).send('Book not found');
       } else {
@@ -49,9 +58,9 @@ app.post('/books', (req, res) => {
     book.title,
     book.author,
     function (err) {
-      if (err) {
+      if (err)
         res.status(500).send(err);
-      } else {
+      else {
         book.id = this.lastID;
         res.send(book);
       }
@@ -68,9 +77,9 @@ app.put('/books/:id', (req, res) => {
     book.author,
     req.params.id,
     function (err) {
-      if (err) {
+      if (err)
         res.status(500).send(err);
-      } else {
+      else {
         res.send(book);
       }
     }
@@ -88,5 +97,5 @@ app.delete('/books/:id', (req, res) => {
   });
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}...`));
